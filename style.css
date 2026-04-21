@@ -1,137 +1,133 @@
-/* CSS Checklist Implementation */
+/* CSS Selectors Checklist Implementation */
 
-/* 1. CSS Variables & Fallbacks */
-:root {
-    --primary-bg: #f4f4f9;
-    --main-text-color: rgb(0, 50, 0); /* Color: rgb - Dark Green */
-    --accent-color: hsl(120, 100%, 25%); /* Color: hsl - Forest Green */
-}
-
-/* 2. General Styles & Fonts */
+/* 1. Universal Selector (*) */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* 2. Element Selector (element) */
 body {
-    /* Fonts: 3rd party font usage */
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: var(--background-override, var(--primary-bg)); /* CSS Variables & Fallbacks */
-    color: var(--main-text-color);
-    
-    /* Units: Relative (rem, vw) and Absolute (in) */
-    padding: 0.5in; /* Absolute Unit 1: in */
-    max-width: 90vw; /* Relative Unit 1: vw */
-    margin-left: auto; /* Box Model: Auto margins */
-    margin-right: auto;
+    background-color: #f4f4f9;
+    color: rgb(0, 50, 0);
+    padding: 2rem;
 }
 
-/* 3. Layout: Flexbox */
-header {
-    display: flex; /* Flexbox: apply flex to display */
-    flex-direction: column; /* Flex attribute 1 */
-    align-items: center; /* Flex attribute 2 */
-    justify-content: space-between; /* Flex attribute 3 */
-    margin-bottom: 2rem; /* Relative Unit 2: rem */
-}
-
-/* 4. Layout: Grid */
+/* 3. Class Selector (.class) */
 .main-container {
-    display: grid; /* Grid: apply grid to display */
-    grid-template-columns: 1fr; /* Grid attribute 1 */
-    gap: 20px; /* Grid attribute 2 */
-    padding: 20px; /* Absolute Unit 2: px */
-    background-color: #FFFFFF; /* Color: Hex */
+    background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
-    min-width: 300px; /* Sizing: min-width */
 }
 
-/* 5. Box Model: Long and Short Syntax */
-section {
-    /* Margin: Long syntax */
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 0px;
-    margin-right: 0px;
-
-    /* Padding: Short syntax */
-    padding: 15px 10px 15px 10px;
-
-    /* Borders: Long syntax */
-    border-style: solid;
-    border-color: rgba(0, 128, 0, 0.2); /* Color: rgba - Light Green Border */
-    border-width: 1px;
-    border-radius: 4px;
+/* 4. Combining Two Selectors (element.class) */
+main.main-container {
+    box-shadow: 0 4px 6px rgba(0, 100, 0, 0.1);
 }
 
-nav a {
-    /* Text Styles */
-    color: var(--accent-color);
-    text-decoration: none; /* Text: text-decoration */
-    text-align: center; /* Text: text-align */
-    
-    /* Display: inline-block */
-    display: inline-block; 
-    padding: 5pt; /* Absolute Unit 3: pt */
-}
-
-/* 6. Pseudo-classes */
-nav a:hover {
-    /* Color Name */
-    color: green; /* Changed to Green */
-    text-decoration: underline;
-}
-
-nav a:active {
-    /* Pseudo-class: :active */
-    transform: translateY(2px);
-}
-
-/* 7. Positioning */
-h2 {
-    position: relative; /* Position 1: relative */
-    top: 0;
-}
-
+/* 5. ID Selector (#id) */
 #minutes {
-    position: sticky; /* Position 2: sticky */
+    position: sticky;
     top: 0;
-    background-color: color-mix(in srgb, white, #e8f5e9); /* Color: color-mix - Greenish tint */
+    background-color: color-mix(in srgb, white, #e8f5e9);
     z-index: 10;
 }
 
-/* 8. Advanced Colors */
-h3 {
-    /* Color: Wider-gamut color space - Greenish */
-    color: color(display-p3 0.2 0.7 0.2); 
+/* 6. Selector List (element, element) */
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    color: hsl(120, 100%, 15%);
 }
 
-/* 9. Sizing and Media Elements */
+/* 7. Attribute Selector ([attribute=foo]) */
+input[type="date"] {
+    border: 2px solid green;
+    padding: 5px;
+}
+
+/* 8. Combinators */
+
+/* Descendant Combinator (element element) */
+header nav {
+    margin-top: 10px;
+}
+
+/* Child Combinator (element > element) */
+section > h3 {
+    border-left: 5px solid green;
+    padding-left: 10px;
+}
+
+/* Adjacent sibling combinator (element + element) */
+label + input {
+    margin-left: 10px;
+}
+
+/* General sibling combinator (element ~ element) */
+h3 ~ p {
+    font-style: italic;
+    color: #444;
+}
+
+/* 9. Pseudo-class Selector (e.g. p:hover) */
+nav a:hover {
+    color: green;
+    text-decoration: underline;
+}
+
+/* 10. New Selectors: :has() (Adopted 2023) */
+/* Style sections that contain a list differently */
+section:has(ul) {
+    background-color: rgba(0, 255, 0, 0.02);
+}
+
+/* 11. Nested Selectors (Adopted 2023) */
+form {
+    margin-top: 2rem;
+    
+    fieldset {
+        border: 2px solid hsla(120, 60%, 70%, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+
+        legend {
+            font-weight: bold;
+            color: green;
+            padding: 0 10px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darkgreen;
+            }
+        }
+    }
+}
+
+/* Layout and Misc (Keeping earlier requirements) */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 img, video {
-    width: 100%; /* Sizing: width */
-    max-width: 500px; /* Sizing: max-width */
-    height: auto; /* Sizing: height */
-    display: block; /* Display: block */
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 20px 0;
 }
 
-/* 10. Responsiveness: Media Query */
 @media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    .main-container {
-        grid-template-columns: 100%; /* Layout reflow */
-    }
-    nav {
-        /* Display: none example for small screens */
-        display: block; 
-    }
-}
-
-/* 11. Box Model: Border Short Syntax */
-fieldset {
-    border: 2px solid hsla(120, 60%, 70%, 0.8); /* Color: hsla - Greenish and Border short */
-    padding-top: 20px; /* Padding: Long syntax */
+    body { padding: 10px; }
 }

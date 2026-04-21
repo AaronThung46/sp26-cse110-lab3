@@ -3,7 +3,7 @@
 ## Date: [YYYY-MM-DD]
 
 ### [Name]
-- **What did I do yesterday?**
+- **What needs to be done?**
   - 
-- **What will I do today?**
+- **What has been done?**
   - 
