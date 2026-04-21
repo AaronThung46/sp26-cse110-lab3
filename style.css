@@ -83,12 +83,9 @@ section:has(ul) {
     background-color: rgba(0, 255, 0, 0.02);
 }
 
-/* 11. Simple Nested Selector (Adopted 2023) */
-/* Fulfills the "at least one type" requirement in a simple way */
-header {
-    & h1 {
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
+/* 11. Simple Nested Selector (Adopted 2023) - Un-nested to avoid Parse Errors */
+header h1 {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 /* Flat Form Styles (To avoid Parse Errors in older tools) */
