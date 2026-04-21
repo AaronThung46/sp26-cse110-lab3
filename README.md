@@ -1,1 +1,2 @@
-# sp26-cse110-lab3
+# Lab 2 - Starter
+https://aaronthung46.github.io/Lab2_Starter/
