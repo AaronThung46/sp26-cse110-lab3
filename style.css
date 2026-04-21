@@ -79,41 +79,48 @@ nav a:hover {
 }
 
 /* 10. New Selectors: :has() (Adopted 2023) */
-/* Style sections that contain a list differently */
 section:has(ul) {
     background-color: rgba(0, 255, 0, 0.02);
 }
 
-/* 11. Nested Selectors (Adopted 2023) */
-form {
-    margin-top: 2rem;
-    
-    fieldset {
-        border: 2px solid hsla(120, 60%, 70%, 0.8);
-        padding: 20px;
-        border-radius: 10px;
-
-        legend {
-            font-weight: bold;
-            color: green;
-            padding: 0 10px;
-        }
-
-        button {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: darkgreen;
-            }
-        }
+/* 11. Simple Nested Selector (Adopted 2023) */
+/* Fulfills the "at least one type" requirement in a simple way */
+header {
+    & h1 {
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 }
 
-/* Layout and Misc (Keeping earlier requirements) */
+/* Flat Form Styles (To avoid Parse Errors in older tools) */
+form {
+    margin-top: 2rem;
+}
+
+fieldset {
+    border: 2px solid hsla(120, 60%, 70%, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+legend {
+    font-weight: bold;
+    color: green;
+    padding: 0 10px;
+}
+
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+/* Layout and Misc */
 header {
     display: flex;
     flex-direction: column;
